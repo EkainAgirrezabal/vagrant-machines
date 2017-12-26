@@ -19,15 +19,13 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: "sudo apt-get update"
   config.vm.provision :shell, :path => "setup.sh", :args => [USER_NAME]
 ## SYNCED FOLDER: enable after first 'vagrant up', when user exist
-  config.vm.synced_folder HOST_AON_PARENT_PATH+"/aon-jasperreports", "/aon-jasperreports",
-    owner: USER_NAME, group: USER_NAME, mount_options: ["dmode=775,fmode=664"], disabled: false
-  config.vm.synced_folder HOST_AON_PARENT_PATH+"/aon-common-resources", "/aon-common-resources",
-    owner: USER_NAME, group: USER_NAME, mount_options: ["dmode=775,fmode=664"], disabled: false
+  SYNCED_FOLDERS.each do |folder|
+    config.vm.synced_folder SYNCED_FOLDERS_PATH+folder, folder,
+      owner: USER_NAME, group: USER_NAME, mount_options: ["dmode=775,fmode=664"], disabled: SYNCED_FOLDERS_ENABLED
+  end
 ## Landrush host entries
-  config.landrush.host 'esferalia.net', HOST_IP
-  config.landrush.host 'aonsolutions.me', HOST_IP
-  config.landrush.host 'grupoplayasol.com', HOST_IP
-#  config.landrush.host_interface_excludes = [/lo[0-9]*/, /docker[0-9]+/, /tun[0-9]+/]
-#  config.landrush.host_interface_class = :ipv4
-#  config.landrush.host_interface = 'eno1'
+  DNS_ENTRIES.each do |entry|
+    config.landrush.host entry, DNS_IP
+  end
+
 end

@@ -1,15 +1,20 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-USER_NAME = 'dev'
-HOST_AON_PARENT_PATH="/home/eagirrezabal/git/AON-MASTER-UDAPA/aon.parent"
-HOST_FOLDER_JASPERREPORTS="/home/eagirrezabal/git/AON-MASTER-UDAPA/aon.parent/aon-jasperreports"
-HOST_FOLDER_COMMONRESOURCES="/home/eagirrezabal/git/AON-MASTER-UDAPA/aon.parent/aon-common-resources"
-
-HOST_IP='192.168.2.213'
-#HOST_IP='192.168.3.43'
-GUEST_IP='192.168.99.100'
-
 VM_CPU=4
 VM_MEMORY="4096"
+
+USER_NAME = 'dev'
+GUEST_IP='172.11.11.1'
+
+# This must be the host IP
+DNS_IP='172.11.11.1'
+DNS_ENTRIES = ['example1.com', 'example2.com']
+DNS_ENTRIES.push('example3.com')
+DNS_ENTRIES.push('example4.com')
+
+# If enabled, folders and paths must exists
+SYNCED_FOLDERS_ENABLED=false
+SYNCED_FOLDERS_PATH="/path/to/the/synced/folder"
+SYNCED_FOLDERS = ['/entry']
 
