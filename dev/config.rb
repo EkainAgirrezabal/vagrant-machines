@@ -5,10 +5,10 @@ VM_CPU=4
 VM_MEMORY="4096"
 
 USER_NAME = 'dev'
-GUEST_IP='172.11.11.1'
+GUEST_IP='172.11.11.11'
 
 # This must be the host IP
-DNS_IP='172.11.11.1'
+DNS_IP='172.11.11.11'
 DNS_ENTRIES = ['example1.com', 'example2.com']
 DNS_ENTRIES.push('example3.com')
 DNS_ENTRIES.push('example4.com')
